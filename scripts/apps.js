@@ -12,13 +12,16 @@ const updateUI = (data) => {
 
     // update details template
     details.innerHTML = `
-        <h5 class="my-3">${cityDets.EnglishName}</h5>
+         <h5 class="my-3">${cityDets.Region.LocalizedName} {${cityDets.EnglishName}}</h5>
         <div class="my-3">${weather.WeatherText}</div>
-        <div class="display-5 my-4">
+        <div class="display-7 my-4">
+            <p>${dateFns.format(date, 'dddd Do MMMM YYYY')}</p>
             <span>${weather.Temperature.Metric.Value}</span>
             <span>&deg;C / </span>
             <span>${weather.Temperature.Imperial.Value}</span>
             <span>&deg;F</span>
+
+        </div>
 
         </div>
     `
