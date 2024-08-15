@@ -10,6 +10,9 @@ const updateUI = (data) => {
     const {cityDets, weather} = data;
     console.log(data)
 
+    // ADDING TIME AND CONTINENT
+    const date = new Date(weather.LocalObservationDateTime);
+
     // update details template
     details.innerHTML = `
          <h5 class="my-3">${cityDets.Region.LocalizedName} {${cityDets.EnglishName}}</h5>
