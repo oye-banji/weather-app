@@ -13,19 +13,18 @@ const updateUI = (data) => {
     console.log(data)
 
     // ADDING TIME AND CONTINENT
-    const date = new Date(weather.LocalObservationDateTime);
+    const date = new Date(weather.LocalObservationDateTime    );
+    console.log(date);
 
     // update details template
     details.innerHTML = `
-         <h5 class="my-3">${cityDets.Region.LocalizedName} {${cityDets.EnglishName}}</h5>
+        <h5 class="my-3">${cityDets.Region.LocalizedName} {${cityDets.EnglishName}}</h5>
         <div class="my-3">${weather.WeatherText}</div>
-        <div class="display-7 my-4">
-            <p>${dateFns.format(date, 'do E - MMM yyyy')}</p>
-            <span>${weather.Temperature.Metric.Value}</span>
-            <span>&deg;C / </span>
-            <span>${weather.Temperature.Imperial.Value}</span>
-            <span>&deg;F</span>
-
+        <p>${dateFns.format(date, 'p')}</p>
+        <p>${dateFns.format(date, 'PPPP')}</p>
+        <div class="display-6 my-4">
+            <span>${weather.Temperature.Metric.Value}&deg;C - </span>
+            <span>${weather.Temperature.Imperial.Value}&deg;F</span>
         </div>
     `
     // //UPDATING BACKGROUND UMAGES
