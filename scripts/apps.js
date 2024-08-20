@@ -5,6 +5,8 @@ const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
 const body = document.querySelector('.container');
 const bg = document.querySelector('.weather');
+const forecast = new Forecast();
+
 const updateUI = (data) => {
     // DESTRUCTURE PROPERTIES
     const {cityDets, weather} = data;
@@ -18,13 +20,11 @@ const updateUI = (data) => {
          <h5 class="my-3">${cityDets.Region.LocalizedName} {${cityDets.EnglishName}}</h5>
         <div class="my-3">${weather.WeatherText}</div>
         <div class="display-7 my-4">
-            <p>${dateFns.format(date, 'dddd Do MMMM YYYY')}</p>
+            <p>${dateFns.format(date, 'do E - MMM yyyy')}</p>
             <span>${weather.Temperature.Metric.Value}</span>
             <span>&deg;C / </span>
             <span>${weather.Temperature.Imperial.Value}</span>
             <span>&deg;F</span>
-
-        </div>
 
         </div>
     `
@@ -66,7 +66,7 @@ cityForm.addEventListener('submit', e => {
     cityForm.reset()
 
     //UPDATE THE ui with new city
-    Forecast.updateCity(city)
+    forecast.updateCity(city)
         .then(data => updateUI(data))
         .catch(err => console.log(err));
 
@@ -75,8 +75,8 @@ cityForm.addEventListener('submit', e => {
 });
 
 if(localStorage.getItem('city')){
-    Forecast.updateCity(localStorage.getItem('city'))
+    forecast.updateCity(localStorage.getItem('city'))
         .then(data => updateUI(data))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
 }
 
