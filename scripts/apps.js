@@ -56,13 +56,7 @@ const updateUI = (data) => {
         card.classList.remove('d-none')
     }
 }
-const updateCity = async (city) => {
-     const cityDets = await getCity(city);
-     const weather = await getWeather(cityDets.Key);
-     
 
-     return { cityDets, weather };
-}
 cityForm.addEventListener('submit', e => {
     // PREVENT DEFAULT ACTION
     e.preventDefault();
@@ -72,8 +66,17 @@ cityForm.addEventListener('submit', e => {
     cityForm.reset()
 
     //UPDATE THE ui with new city
-    updateCity(city)
+    Forecast.updateCity(city)
         .then(data => updateUI(data))
         .catch(err => console.log(err));
-})
+
+    //SET LOCCAL STORAGE
+    localStorage.setItem('city', city);
+});
+
+if(localStorage.getItem('city')){
+    Forecast.updateCity(localStorage.getItem('city'))
+        .then(data => updateUI(data))
+        .catch(err => console.log(err))
+}
 
