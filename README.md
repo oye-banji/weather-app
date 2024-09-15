@@ -12,3 +12,5 @@ Technologies Used: Built with JavaScript, HTML, and CSS.
 Future Plans
 - Future Weather Forecast: Add functionality to display weather forecasts.
 - Enhanced Backgrounds: Improve background images for a more seamless user experience.
+
+A link to access the website: https://weather-29uce6d9c-banjis-projects-35120b6b.vercel.app/
